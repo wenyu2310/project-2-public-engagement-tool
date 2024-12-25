@@ -1,14 +1,20 @@
+import { Route, Routes } from 'react-router-dom'
 import { useState,useEffect } from 'react'
 import * as parkService from './services/parkService'
 import * as timelineService from './services/timelineService'
 import ParkList from './components/ParkList'
+import NavBar from './components/NavBar'
+import Home from './components/home'
+
 import './App.css'
 
 const App = () => {
   const [parkList,setParkList] = useState([])
+  
 
 
   useEffect(()=> {
+    
     const fetchNames = async ()=>{
       try{
         const data = await parkService.index();
@@ -20,7 +26,8 @@ const App = () => {
             description: park.fields.description,
             targetCompletion:park.fields.target_completion,
             plan: park.fields.plan,
-            perspective: park.fields.perspective
+            perspective: park.fields.perspective,
+            stage: park.fields.stage
           }
         ))
         if (parks.error){
@@ -36,11 +43,19 @@ const App = () => {
 
 
 },[]);
-
+const newSearchData= (searchTerm)=> {
+  setParkList(parkList.filter((park) =>park.name === searchTerm ))
+}
 return (
   <>
-  <h1>Public Engagement Tool</h1>
-  <ParkList parkList={parkList}/>
+
+  <NavBar />
+  <Routes>
+    <Route path='/' element={<Home/>}/>
+    <Route path='/projects' element={<ParkList parkList={parkList} newSearchData={newSearchData} />} />
+    <Route path='/partnerships' element={<ParkList parkList={parkList}/>} />
+  </Routes>
+
   </>
 )
 }
