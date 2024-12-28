@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Carousel, Avatar, Card } from 'antd';
+import { Carousel, Avatar, Card, Space, AutoComplete } from 'antd';
 const { Meta } = Card;
 
 const ParkCard = (props) => {
   const contentStyle = {
-    height: '400px',
+    height: '150px',
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
@@ -14,41 +15,18 @@ const ParkCard = (props) => {
     console.log(currentSlide);
   }
   return (
+<Space direction="vertical" size={16}>
     <Card
+      title={<a href={`/projects/${props.park._id}`}>{props.park.name}</a>}
       style={{
-        width: 800,
+        width: 300,
       }}
-      cover={<Carousel afterChange={onChange}>
-        <div>
-          <h3 style={contentStyle}><img
-            width='800'
-            alt= {props.park.name}
-            src={props.park.plan}
-          /></h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}><img
-            width='800'
-            alt="example"
-            src={props.park.perspective}
-          /></h3>
-        </div>
-      </Carousel>
-        /*          
-        */
-      }
-      actions={[
-        <SettingOutlined key="setting" />,
-        <EditOutlined key="edit" />,
-        <EllipsisOutlined key="ellipsis" />,
-      ]}
     >
-      <Meta
-        avatar={<Avatar src="https://i.pinimg.com/736x/b5/79/e8/b579e811c716d450f9b06ea14e0e547c.jpg" />}
-        title={props.park.name}
-        description={props.park.description}
-      />
+      <p>{props.park.description}</p>
+
     </Card>
+  
+  </Space>
   )
 };
 export default ParkCard;

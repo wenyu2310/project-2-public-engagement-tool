@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom'
+import { SearchOutlined } from '@ant-design/icons';
+import { Button, Divider, Flex, Radio, Space, Tooltip } from 'antd';
 import { useState } from 'react'
 import ParkCard from "./ParkCard"
 
@@ -13,25 +14,33 @@ const ParkList = (props) =>{
         props.newSearchData(formData);
         setFormData('');
       };
+      const [position, setPosition] = useState('end');
       
     return(
         <>
         <h2>Search</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="park">Project Name:</label>
+                <label htmlFor="park">Project Name:  </label>
                 <input
                     id="park"
                     type="text"
                     value={formData}
                     onChange={handleChange}
                 />
-                <button type="submit">Search</button>
+          {/* <Button
+            icon={<SearchOutlined />}
+            type="submit"
+            iconPosition={position}
+          /> */}
+          <button type="submit"> Search</button>
             </form>
         
 
         <h2>New Parks</h2>
         {props.parkList.map((park) => (
             <ParkCard key={park._id} park={park}/>
+
+
         ))}
         </>
     )

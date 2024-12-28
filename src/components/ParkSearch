@@ -1,0 +1,32 @@
+import { useState } from "react"
+
+const ParkSearch = (props) => {
+    const [formData,setFormData] = useState('')
+    const handleChange =(e) =>{
+        setFormData(e.target.value)
+    } 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.newSearchData(formData);
+        setFormData('');
+      };
+
+    return (
+        <>
+            <h2>Search</h2>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="park">Park Name:</label>
+                <input
+                    id="park"
+                    type="text"
+                    value={formData}
+                    onChange={handleChange}
+                />
+                <button type="submit">Search</button>
+            </form>
+        </>
+    )
+
+}
+
+export default ParkSearch
