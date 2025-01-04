@@ -1,23 +1,32 @@
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as parkService from "./services/parkService";
-import * as timelineService from "./services/timelineService";
+import * as partnershipsService from "./services/partnershipsService"
 import ParkList from "./components/ParkList";
+import PartnershipsList from "./components/PartnershipsList"
 import NavBar from "./components/NavBar";
 import Home from "./components/home";
-import ParkDetails from "./components/ParkDetails";
-import ParkDetailsCopy from "./components/ParkDetails copy";
+import ParkDetails from "./components/ParkDetails/ParkDetails";
+
 
 import "./App.css";
+import Thankyou from "./components/thankyou";
 
 const App = () => {
   const [parkList, setParkList] = useState([]);
+  const [partnershipsList,setPartnershipsList] = useState([]);
+  const [feedbackList,setFeedbackList] = useState([]);
+  const addFeedback = (feedbackData) => {
+    setFeedbackList([...feedbackList, feedbackData]);
+  };
+  const [isLoading,setIsloading] =useState(true)
 
   useEffect(() => {
     const fetchNames = async () => {
       try {
         const data = await parkService.index();
-        //console.log(data.records)
+        const data1= await partnershipsService.index();
+        console.log(data1.records)
         const parks = data.records.map((park) => ({
           _id: park.fields._id,
           name: park.fields.name,
@@ -26,11 +35,27 @@ const App = () => {
           plan: park.fields.plan,
           perspective: park.fields.perspective,
           stage: park.fields.stage,
+          status:park.fields.status
         }));
         if (parks.error) {
           throw new Error(parks.error);
         }
         setParkList(parks);
+        setIsloading(false)
+
+        
+      const partnerships = data1.records.map((partner) => ({
+        _id: partner.fields._id,
+        name: partner.fields.name,
+        description: partner.fields.description,
+        photo: partner.fields.photo
+      }));
+      if (partnerships.error) {
+        throw new Error(partnerships.error);
+      }
+      setPartnershipsList(partnerships);
+      setIsloading(false)
+      
       } catch (error) {
         console.log(error);
       }
@@ -40,11 +65,16 @@ const App = () => {
   const newSearchData = (searchTerm) => {
     setParkList(parkList.filter((park) => park.name === searchTerm));
   };
+  
 
   console.log(parkList);
+  console.log(JSON.stringify(feedbackList))
   return (
     <>
       <NavBar />
+      {isLoading? (
+        <h2>Loading...</h2>
+      ):(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -55,15 +85,21 @@ const App = () => {
         />
         <Route
           path="/partnerships"
-          element={<ParkList parkList={parkList} />}
+          element={<PartnershipsList partnershipsList={partnershipsList} />}
         />
         <Route
           path="/projects/:parkId"
-          element={<ParkDetails parkList={parkList} />}
+          element={<ParkDetails parkList={parkList} addFeedback={addFeedback} />}
         />
-        
+        <Route
+          path="/thankyou"
+          element={<Thankyou/>}
+        />
       </Routes>
+      )
+      }
     </>
+        
   );
 };
 

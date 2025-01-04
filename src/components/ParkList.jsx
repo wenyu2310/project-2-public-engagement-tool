@@ -18,7 +18,8 @@ const ParkList = (props) =>{
       
     return(
         <>
-        <h2>Search</h2>
+        <h2>Projects Directory</h2>
+
             <form onSubmit={handleSubmit}>
                 <label htmlFor="park">Project Name:  </label>
                 <input
@@ -34,9 +35,8 @@ const ParkList = (props) =>{
           /> */}
           <button type="submit"> Search</button>
             </form>
-        
+            <br/><br/>
 
-        <h2>New Parks</h2>
         {props.parkList.map((park) => (
             <ParkCard key={park._id} park={park}/>
 

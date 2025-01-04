@@ -13,8 +13,8 @@ const NavBar = () => {
             <div>
                 <h1>Public Engagement Portal</h1>
             </div>
-          <Space direction="vertical" size={16}>
-            <Space wrap size={16}>
+          <Space direction="vertical" size={10}>
+            <Space wrap size={10}>
               <Avatar icon={<UserOutlined />} />
               <h5>Username</h5>
             </Space>
@@ -23,7 +23,7 @@ const NavBar = () => {
       </div>
       <div
         style={{
-          padding: "20px",
+          padding: "0px",
         }}
       >
         <Anchor

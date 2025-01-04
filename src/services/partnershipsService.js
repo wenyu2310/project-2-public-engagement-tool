@@ -1,4 +1,4 @@
-const BASE_URL= `${import.meta.env.VITE_DESIGN_SERVER_URL}`;
+const BASE_URL= `${import.meta.env.VITE_PARTNERSHIPS_SERVER_URL}`;
 const AIRTABLE_ACCESS_TOKEN = `${import.meta.env.VITE_AIRTABLE_ACCESS_TOKEN}`
 
 const index = async () => {

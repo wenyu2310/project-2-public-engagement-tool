@@ -1,31 +1,31 @@
-import { Link } from 'react-router-dom'
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Carousel, Avatar, Card, Space, AutoComplete } from 'antd';
-const { Meta } = Card;
+
+import {  Card, Space,Col, Divider, Row} from 'antd';
+
 
 const ParkCard = (props) => {
-  const contentStyle = {
-    height: '150px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79',
-  };
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  }
+
   return (
-<Space direction="vertical" size={16}>
+<Space  >
+<Divider orientation="right"> </Divider>
+<Row gutter={[16, 24]}>
+<Col className="gutter-row" span={6}>
     <Card
       title={<a href={`/projects/${props.park._id}`}>{props.park.name}</a>}
       style={{
         width: 300,
+        height: 450
       }}
+      cover={
+        <img
+          alt="example"
+          src={props.park.plan}
+        />}
     >
       <p>{props.park.description}</p>
 
     </Card>
-  
+  </Col>
+  </Row>
   </Space>
   )
 };
