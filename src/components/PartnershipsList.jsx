@@ -7,13 +7,16 @@ const PartnershipList = (props) => {
     <>
 
       <h2>Our Partners</h2>
+      <p>Be involved in the design, development and management of Singapore's parks and green spaces across Singapore! 
+ 
+ Sign up below and we will contact you for engagement sessions by the National Parks Board (NParks) if there are park redevelopments or new park developments near your area of residence.</p>
       {props.partnershipsList.map((partner) => (
         <>
         <Flex justify="center" gap="middle" vertical>
       <Card
   
             hoverable
-            style={{ width: 800 }}
+            style={{ width: 1000 }}
             cover={
               <img
                 alt={partner?.name}

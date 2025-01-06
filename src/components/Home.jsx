@@ -16,7 +16,6 @@ const Home = () => {
   }
   return (
   <>
-  
   <h2>Welcome to the NParks Public Engagement Portal</h2>
   <p>Discover the green heartbeat of Singapore! </p>
   <p>At NParks, we’re dedicated to creating vibrant, sustainable spaces where nature thrives and communities flourish. This portal is your gateway to actively participate in shaping our city in nature. Whether you’re here to explore upcoming park developments, contribute your ideas to enhance our green spaces, or learn more about conservation and biodiversity efforts, your voice matters. Together, let’s co-create a greener, more inclusive Singapore for generations to come.
