@@ -5,12 +5,13 @@ import * as partnershipsService from "./services/partnershipsService"
 import ParkList from "./components/ParkList";
 import PartnershipsList from "./components/PartnershipsList"
 import NavBar from "./components/NavBar";
-import Home from "./components/home";
+import Home from "./components/Home";
+import Thankyou from "./components/Thankyou";
 import ParkDetails from "./components/ParkDetails/ParkDetails";
 
 
 import "./App.css";
-import Thankyou from "./components/thankyou";
+
 
 const App = () => {
   const [parkList, setParkList] = useState([]);
