@@ -1,6 +1,7 @@
 # Developing a 'Parks Development Public Engagement Tool' 
 ## Preview screenshot
-![image](https://github.com/wenyu2310/project-2-public-engagement-tool/blob/main/public/Project%202%20screenshot%20log.jpg)
+![image](https://github.com/user-attachments/assets/8e795d70-0b33-474c-bf6b-b132563872fa)
+
 
 ## Link to Site
 
@@ -14,9 +15,11 @@ This Parks Development Public Engagement Tool aims to promote greater stewardshi
 7 weeks
 
 ## MVP- Minimum Viable Product
-1. Min 5 components
-2. One API call
-3. Use effect, Use params from react router dom
+1. 5 components 
+2. 4 props
+3. 2 useState
+4. 2 React router routes
+5. 1 lifting state
 - REACT
 - Hosted on Vercel
 - Commits to Github frequently
