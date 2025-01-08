@@ -105,7 +105,7 @@ const ParkDetails = (props) => {
           items={[
             {
               title: "Planning",
-              subTitle: "Left 00:00:08",
+              // subTitle: "Left 00:00:08",
               description,
             },
             {
@@ -114,12 +114,12 @@ const ParkDetails = (props) => {
             },
             {
               title: "Environmental Impact Assessment",
-              subTitle: "Left 00:00:08",
+              // subTitle: "Left 00:00:08",
               description,
             },
             {
               title: "Authority Submission",
-              subTitle: "Left 00:00:08",
+              // subTitle: "Left 00:00:08",
               description,
             },
             {
