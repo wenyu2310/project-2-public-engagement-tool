@@ -1,3 +1,4 @@
+// import * as feedbackService from "./services/feedbackService"
 import "./ParkDetails.css";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -13,6 +14,7 @@ import {
 } from "antd";
 const { Meta } = Card;
 
+
 const contentStyle = {
   height: "360px",
   width: "400px",
@@ -24,18 +26,18 @@ const contentStyle = {
 
 const ParkDetails = (props) => {
   const { parkId } = useParams();
-  console.log(parkId);
+  // console.log(parkId);
   const selectedPark = props.parkList?.find((park) => park._id === parkId);
   const initialState = {
     _id: parkId,
     feedbackType: "Partnership",
     feedback: "",
   };
-  console.log(initialState);
+  // console.log(initialState);
   const [formData, setFormData] = useState(initialState);
 
   const onChange = (currentSlide) => {
-    console.log(currentSlide);
+    // console.log(currentSlide);
   };
 
   const styles = {
@@ -55,10 +57,13 @@ const ParkDetails = (props) => {
   };
 
   const description = "Estimated 1 year for completion";
+  
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     props.addFeedback(formData);
+    await props.postFeedback(formData)
     setFormData(initialState);
     navigate("/thankyou");
   };
@@ -162,10 +167,10 @@ const ParkDetails = (props) => {
           <br />
           <textarea
             rows={10}
-            cols={40}
+            cols={60}
             required
             type="text"
-            id="feeback"
+            id="feedback"
             name="feedback"
             placeholder=""
             onChange={handleChange}

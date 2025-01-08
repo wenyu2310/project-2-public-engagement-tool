@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as parkService from "./services/parkService";
 import * as partnershipsService from "./services/partnershipsService"
+import * as feedbackService from "./services/feedbackService"
 import ParkList from "./components/ParkList";
 import PartnershipsList from "./components/PartnershipsList"
 import NavBar from "./components/NavBar";
@@ -27,8 +28,8 @@ const App = () => {
       try {
         const data = await parkService.index();
         const data1= await partnershipsService.index();
-        console.log(data1.records)
-        const parks = data.records.map((park) => ({
+        // console.log(data1.records)
+        const parks = data.records?.map((park) => ({
           _id: park.fields._id,
           name: park.fields.name,
           description: park.fields.description,
@@ -66,10 +67,12 @@ const App = () => {
   const newSearchData = (searchTerm) => {
     setParkList(parkList.filter((park) => park.name === searchTerm));
   };
-  
-
-  console.log(parkList);
-  console.log(JSON.stringify(feedbackList))
+  const postFeedback=async(formData) =>{
+     feedbackService.index(formData);
+     console.log(formData)
+  }
+  // console.log(parkList);
+  // console.log(JSON.stringify(feedbackList))
   return (
     <>
       <NavBar />
@@ -90,7 +93,7 @@ const App = () => {
         />
         <Route
           path="/projects/:parkId"
-          element={<ParkDetails parkList={parkList} addFeedback={addFeedback} />}
+          element={<ParkDetails parkList={parkList} addFeedback={addFeedback} postFeedback={postFeedback}/>}
         />
         <Route
           path="/thankyou"
