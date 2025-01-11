@@ -4,6 +4,7 @@
 
 
 ## Link to Site
+https://project-2-public-engagement-tool.vercel.app/
 
 ## Project Brief
 This Parks Development Public Engagement Tool aims to promote greater stewardship for the new and upcoming parks in Singapore. The tool will provide the members of public  (1) the updated information and any changes to design, timeline and upcoming engagement sessions (2) platform for partnership proposal (3) place for engagement/feedback. 
